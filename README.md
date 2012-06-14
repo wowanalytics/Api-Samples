@@ -1,4 +1,4 @@
-Api-Samples
-===========
+API-Sample
+==========
 
-Api Samples
+WOW Analytics API samples
