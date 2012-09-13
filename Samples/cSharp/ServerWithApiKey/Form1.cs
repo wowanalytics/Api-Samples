@@ -29,7 +29,7 @@ namespace ServerWithApiKey
 
             var clients = restClient.GetClients();
 
-            lstClients.DataSource = clients.Data;
+            lstClients.DataSource = clients;
             lstClients.DisplayMember = "Name";
             
 
@@ -50,11 +50,11 @@ namespace ServerWithApiKey
 
             var client = restClient.GetClientDetails(selectedClient.Id);
 
-            txtName.Text = client.Data.Name;
-            txtId.Text = client.Data.Id;
-            txtVisitsMonth.Text = client.Data.CompanyVisitsThisMonth.ToString();
-            txtVisitsToday.Text = client.Data.CompanyVisitsToday.ToString();
-            txtExpires.Text = client.Data.AccountExpiry.ToString();
+            txtName.Text = client.Name;
+            txtId.Text = client.Id;
+            txtVisitsMonth.Text = client.CompanyVisitsThisMonth.ToString();
+            txtVisitsToday.Text = client.CompanyVisitsToday.ToString();
+            txtExpires.Text = client.AccountExpiry.ToString();
 
         }
 

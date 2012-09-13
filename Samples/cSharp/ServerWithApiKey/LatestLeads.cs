@@ -53,7 +53,7 @@ namespace ServerWithApiKey
 
             var leads = restClient.GetLatestLeads(ClientId, int.Parse(txtMinutes.Text), int.Parse(txtNumToGet.Text));
 
-            dgLeads.DataSource = leads.Data;
+            dgLeads.DataSource = leads;
             
 
         }

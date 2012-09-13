@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -19,7 +20,7 @@ namespace wow.ApiLibrary
         /// <summary>
         /// The RestClient that will make the calls
         /// </summary>
-        private RestClient _client;
+        private readonly RestClient _client;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WowClient"/> class.
@@ -49,17 +50,15 @@ namespace wow.ApiLibrary
             _client.Authenticator = new ApiKeyAuthentication(apiKey);
         }
 
-        
-        public Result<List<Client>> GetClients()
+
+        public List<Client> GetClients()
         {
             var request = new RestRequest
             {
-                Resource = "clients/available",
-                DateFormat = "yyyy-MM-dd HH:mm:ss",
-                RequestFormat = DataFormat.Json
+                Resource = "clients"
             };
 
-            var result = _client.Execute<Result<List<Client>>>(request);
+            var result = _client.Execute<List<Client>>(request);
 
             if (result.ResponseStatus != ResponseStatus.Completed)
             {
@@ -69,33 +68,28 @@ namespace wow.ApiLibrary
             return result.Data;
         }
 
-        public Result<ClientDetails> GetClientDetails(string clientId)
+        public ClientDetails GetClientDetails(string clientId)
         {
             var request = new RestRequest
             {
-                Resource = "clients/detail/{clientId}",
-                RequestFormat = DataFormat.Json
+                Resource = "clients/{clientId}"
             };
 
             request.AddUrlSegment("clientId", clientId);
 
-            var result = _client.Execute<Result<ClientDetails>>(request);
+            var result = _client.Execute<ClientDetails>(request);
 
             if (result.ResponseStatus != ResponseStatus.Completed)
             {
                 throw new Exception(result.ErrorMessage);
             }
 
-            if (result.Data.Error != null)
-            {
-                throw new Exception(result.Data.Error.Description);
-            }
 
             return result.Data;
 
         }
 
-        public Result<List<Lead>> GetLatestLeads(string clientId, int lastMinutes, int numberToGet = 10)
+        public List<Lead> GetLatestLeads(string clientId, int lastMinutes, int numberToGet = 10)
         {
             if (lastMinutes > 60)
             {
@@ -104,7 +98,7 @@ namespace wow.ApiLibrary
 
             var request = new RestRequest
             {
-                Resource = "leads/latest/{clientId}/{minutes}/{numberToGet}",
+                Resource = "latestleads/{clientId}?minutes={minutes}&numberToGet={numberToGet}",
                 RequestFormat = DataFormat.Json
             };
 
@@ -112,17 +106,13 @@ namespace wow.ApiLibrary
             request.AddUrlSegment("minutes", lastMinutes.ToString());
             request.AddUrlSegment("numberToGet", numberToGet.ToString());
 
-            var result = _client.Execute<Result<List<Lead>>>(request);
+            var result = _client.Execute<List<Lead>>(request);
 
             if (result.ResponseStatus != ResponseStatus.Completed)
             {
                 throw new Exception(result.ErrorMessage);
             }
 
-            if (result.Data.Error != null)
-            {
-                throw new Exception(result.Data.Error.Description);
-            }
 
             return result.Data;
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -19,5 +20,12 @@ namespace wow.ApiLibrary.Models
         /// <value>The name.</value>
         /// <remarks></remarks>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the account expiry.
+        /// </summary>
+        /// <value>The account expiry.</value>
+        /// <remarks></remarks>
+        public DateTime? AccountExpiry { get; set; }
     }
 }
