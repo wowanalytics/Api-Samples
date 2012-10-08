@@ -98,7 +98,7 @@ namespace wow.ApiLibrary
 
             var request = new RestRequest
             {
-                Resource = "latestleads/{clientId}?minutes={minutes}&numberToGet={numberToGet}",
+                Resource = "latestleads/{clientId}/{minutes}/{numberToGet}",
                 RequestFormat = DataFormat.Json
             };
 
