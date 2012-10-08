@@ -28,3 +28,9 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+
+#Allow NuGet.exe (do not ignore)
+!.nuget/NuGet.exe
+
+#NuGet
+packages/
