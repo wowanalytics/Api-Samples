@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace wow.ApiLibrary.Models
 {
@@ -43,5 +44,11 @@ namespace wow.ApiLibrary.Models
         /// <value>The company visits this month.</value>
         /// <remarks></remarks>
         public int CompanyVisitsThisMonth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the domains.
+        /// </summary>
+        /// <value>The domains.</value>
+        public List<string> Domains { get; set; }
     }
 }

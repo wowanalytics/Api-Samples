@@ -12,8 +12,7 @@ namespace wow.ApiLibrary.Models
         /// </summary>
         /// <value>The id.</value>
         /// <remarks></remarks>
-        public string Id { get; set; }
-
+        public Guid Id { get; set; }
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
@@ -27,5 +26,17 @@ namespace wow.ApiLibrary.Models
         /// <value>The account expiry.</value>
         /// <remarks></remarks>
         public DateTime? AccountExpiry { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tracking code.
+        /// </summary>
+        /// <value>The tracking code.</value>
+        public string TrackingCode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the domains.
+        /// </summary>
+        /// <value>The domains.</value>
+        public List<string> Domains { get; set; }
     }
 }
