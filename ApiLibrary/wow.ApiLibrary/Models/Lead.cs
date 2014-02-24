@@ -1,3 +1,5 @@
+using System;
+
 namespace wow.ApiLibrary.Models
 {
     public class Lead
@@ -38,13 +40,6 @@ namespace wow.ApiLibrary.Models
         public string CompanyName { get; set; }
 
         /// <summary>
-        /// Gets or sets the last email address visited from for the lead.
-        /// </summary>
-        /// <value>The email address.</value>
-        /// <remarks></remarks>
-        public string EmailAddress { get; set; }
-
-        /// <summary>
         /// Gets or sets the perma link.
         /// </summary>
         /// <value>The perma link.</value>
@@ -54,16 +49,15 @@ namespace wow.ApiLibrary.Models
         /// <summary>
         /// Gets or sets the who has been assigned the lead.
         /// </summary>
-        /// <value>The assigned to name.</value>
-        /// <remarks></remarks>
-        public string AssignedToName { get; set; }
+        /// <value>The assigned to.</value>
+        public User AssignedTo { get; set; }
 
         /// <summary>
-        /// Gets or sets the email address of the user assigned to the lead.
+        /// Gets or sets the last email address visited from for the lead.
         /// </summary>
-        /// <value>The assigned to email.</value>
+        /// <value>The email address.</value>
         /// <remarks></remarks>
-        public string AssignedToEmail { get; set; }
+        public string EmailAddress { get; set; }
 
         /// <summary>
         /// The client id that the lead belongs to
@@ -71,6 +65,30 @@ namespace wow.ApiLibrary.Models
         /// <value>The client id.</value>
         /// <remarks></remarks>
         public string ClientId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date that the lead last visited.
+        /// </summary>
+        /// <value>The last visit.</value>
+        public DateTime? LastVisit { get; set; }
+
+        /// <summary>
+        /// Gets or sets the lead band.
+        /// </summary>
+        /// <value>The lead band.</value>
+        public string LeadBand { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date that the lead was assigned.
+        /// </summary>
+        /// <value>The assigned date.</value>
+        public DateTime? AssignedDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date of the leads first visit
+        /// </summary>
+        /// <value>The first visit.</value>
+        public DateTime? FirstVisit { get; set; }
 
     }
 }
