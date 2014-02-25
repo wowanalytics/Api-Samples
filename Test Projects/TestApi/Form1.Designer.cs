@@ -47,6 +47,7 @@
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnTrackedLinks = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -221,11 +222,23 @@
             this.txtPassword.Size = new System.Drawing.Size(161, 20);
             this.txtPassword.TabIndex = 9;
             // 
+            // btnTrackedLinks
+            // 
+            this.btnTrackedLinks.Enabled = false;
+            this.btnTrackedLinks.Location = new System.Drawing.Point(710, 115);
+            this.btnTrackedLinks.Name = "btnTrackedLinks";
+            this.btnTrackedLinks.Size = new System.Drawing.Size(125, 22);
+            this.btnTrackedLinks.TabIndex = 8;
+            this.btnTrackedLinks.Text = "Get Tracked Links";
+            this.btnTrackedLinks.UseVisualStyleBackColor = true;
+            this.btnTrackedLinks.Click += new System.EventHandler(this.btnTrackedLinks_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 405);
+            this.Controls.Add(this.btnTrackedLinks);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtUserName);
@@ -262,6 +275,7 @@
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Button btnTrackedLinks;
     }
 }
 
