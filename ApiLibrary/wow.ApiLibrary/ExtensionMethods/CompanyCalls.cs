@@ -16,7 +16,7 @@ namespace wow.ApiLibrary.ExtensionMethods
                 };
 
             request.AddHeader("api-version", "1");
-            request.AddUrlSegment("leadId", leadId.ToString());
+            request.AddUrlSegment("leadid", leadId.ToString());
             request.AddUrlSegment("clientid", clientId);
 
             var result = self.Client.Execute<CompanyDetails>(request);
