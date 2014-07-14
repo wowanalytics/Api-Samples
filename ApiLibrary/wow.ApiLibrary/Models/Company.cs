@@ -1,4 +1,6 @@
-﻿namespace wow.ApiLibrary.Models
+﻿using System.Collections.Generic;
+
+namespace wow.ApiLibrary.Models
 {
     /// <summary>
     /// Class CompanyDetails.
@@ -48,34 +50,37 @@
         public string Employees { get; set; }
 
         /// <summary>
-        /// Gets or sets the industry sector.
+        /// Gets or sets the industries.
         /// </summary>
-        /// <value>The industry sector.</value>
-        public IndustrySector IndustrySector { get; set; }
-
+        /// <value>The industries.</value>
+        public List<Industry> Industries { get; set; }
+        
         /// <summary>
-        /// Gets or sets the region.
+        /// Gets or sets the revenue.
         /// </summary>
-        /// <value>The region.</value>
-        public string Region { get; set; }
+        /// <value>The revenue.</value>
+        public string Revenue { get; set; }
 
         /// <summary>
         /// Gets or sets the phone number.
         /// </summary>
         /// <value>The phone number.</value>
         public string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets the company description.
+        /// </summary>
+        /// <value>The company description.</value>
+        public string CompanyDescription { get; set; }
     }
 
-    /// <summary>
-    /// Class IndustrySector.
-    /// </summary>
-    public class IndustrySector
+    public class Industry
     {
         /// <summary>
-        /// Gets or sets the sic code.
+        /// Gets or sets the name.
         /// </summary>
-        /// <value>The sic code.</value>
-        public string SicCode { get; set; }
+        /// <value>The name.</value>
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the level1.

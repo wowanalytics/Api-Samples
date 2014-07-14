@@ -25,6 +25,7 @@ namespace ServerWithApiKey
         {
             InitializeComponent();
             _baseUrl = ConfigurationManager.AppSettings["baseUrl"];
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
