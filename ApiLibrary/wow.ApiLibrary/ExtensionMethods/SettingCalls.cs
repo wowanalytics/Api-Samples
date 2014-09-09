@@ -19,10 +19,7 @@ namespace wow.ApiLibrary.ExtensionMethods
 
             var result = self.Client.Execute<List<string>>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
+            result.CheckAndHandleErrors();
 
             return result.Data;
         }

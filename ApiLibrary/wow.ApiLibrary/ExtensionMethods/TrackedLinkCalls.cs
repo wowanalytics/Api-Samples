@@ -21,10 +21,7 @@ namespace wow.ApiLibrary.ExtensionMethods
 
             var result = self.Client.Execute<RecieveTrackedLinks>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
+            result.CheckAndHandleErrors();
 
             return result.Data;
         }
@@ -43,10 +40,7 @@ namespace wow.ApiLibrary.ExtensionMethods
 
             var result = self.Client.Execute<BasicResult>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
+            result.CheckAndHandleErrors();
 
             return result.Data.Result;
         }

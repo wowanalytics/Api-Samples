@@ -27,11 +27,7 @@ namespace wow.ApiLibrary.ExtensionMethods
 
             var result = self.Client.Execute<List<Lead>>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
-
+            result.CheckAndHandleErrors();
 
             return result.Data;
 
@@ -56,11 +52,7 @@ namespace wow.ApiLibrary.ExtensionMethods
 
             var result = self.Client.Execute<ApiPagedList<Lead>>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
-
+            result.CheckAndHandleErrors();
 
             return result.Data;
 
@@ -80,10 +72,7 @@ namespace wow.ApiLibrary.ExtensionMethods
             
             var result = self.Client.Execute<Lead>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
+            result.CheckAndHandleErrors();
 
             return result.Data; 
         }
@@ -103,10 +92,7 @@ namespace wow.ApiLibrary.ExtensionMethods
 
             var result = self.Client.Execute<List<LeadTypeCount>>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
+            result.CheckAndHandleErrors();
 
             return result.Data;
         }
@@ -124,10 +110,7 @@ namespace wow.ApiLibrary.ExtensionMethods
 
             var result = self.Client.Execute<List<LeadTypeCount>>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
+            result.CheckAndHandleErrors();
 
             return result.Data;
         }

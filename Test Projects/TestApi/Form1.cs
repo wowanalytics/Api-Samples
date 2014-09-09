@@ -31,6 +31,13 @@ namespace ServerWithApiKey
 
             var restClient = new WowClient(_baseUrl, auth);
 
+            var trackedLinks = restClient.GetTrackedLinks("ee915d54-7536-47a6-a089-3a22318a40a3", 100);
+
+            if (trackedLinks == null)
+            {
+                
+            }
+
             var clients = restClient.Clients();
 
             lstClients.DataSource = clients;

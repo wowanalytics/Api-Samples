@@ -21,10 +21,7 @@ namespace wow.ApiLibrary.ExtensionMethods
 
             var result = self.Client.Execute<CompanyDetails>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed || result.StatusCode != HttpStatusCode.OK)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
+            result.CheckAndHandleErrors();
 
             return result.Data;
         }

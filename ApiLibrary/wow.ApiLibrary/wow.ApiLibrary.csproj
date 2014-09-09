@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtensionMethods\CompanyCalls.cs" />
+    <Compile Include="ExtensionMethods\RestResponseExtensions.cs" />
     <Compile Include="Models\BasicResult.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="ExtensionMethods\ClientsCalls.cs" />
