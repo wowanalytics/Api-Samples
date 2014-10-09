@@ -19,10 +19,7 @@ namespace wow.ApiLibrary.ExtensionMethods
 
             var result = self.Client.Execute<List<Client>>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed || result.StatusCode != HttpStatusCode.OK)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
+            result.CheckAndHandleErrors();
 
             return result.Data;
         }
@@ -39,10 +36,7 @@ namespace wow.ApiLibrary.ExtensionMethods
 
             var result = self.Client.Execute<ClientDetails>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
+            result.CheckAndHandleErrors();
 
             return result.Data;
 

@@ -35,7 +35,7 @@ namespace ServerWithApiKey
 
             lstClients.DataSource = clients;
             lstClients.DisplayMember = "Name";
-            
+
 
         }
 
@@ -47,6 +47,7 @@ namespace ServerWithApiKey
             if (selectedClient == null)
             {
                 MessageBox.Show("Please select a client");
+                btnTrackedLinks.Enabled = false;
                 return;
             }
 
@@ -62,7 +63,21 @@ namespace ServerWithApiKey
             txtVisitsToday.Text = client.CompanyVisitsToday.ToString();
             txtExpires.Text = client.AccountExpiry.ToString();
 
+            btnTrackedLinks.Enabled = true;
         }
-        
+
+        private void btnTrackedLinks_Click(object sender, EventArgs e)
+        {
+            using (var form = new TrackedLinks
+                {
+                    ClientId = txtId.Text,
+                    UserName = txtUserName.Text,
+                    Password = txtPassword.Text
+                })
+            {
+                form.ShowDialog(this);
+            }
+        }
+
     }
 }

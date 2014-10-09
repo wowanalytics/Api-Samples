@@ -9,11 +9,13 @@ namespace wow.ApiLibrary.Models
     {
         public Guid ProcessId { get; set; }
 
-        public IList<TrackedLink> TrackedLinks { get; set; }
+        public List<TrackedLink> TrackedLinks { get; set; }
     }
 
     public class TrackedLink
     {
+        public Guid LinkId { get; set; }
+
         public string Title { get; set; }
 
         public string Url { get; set; }

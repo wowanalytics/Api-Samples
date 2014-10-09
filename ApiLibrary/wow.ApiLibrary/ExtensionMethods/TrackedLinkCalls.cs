@@ -21,33 +21,28 @@ namespace wow.ApiLibrary.ExtensionMethods
 
             var result = self.Client.Execute<RecieveTrackedLinks>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
+            result.CheckAndHandleErrors();
 
             return result.Data;
         }
 
-        public static bool MarkTrackedLinksProcessed(this WowClient self, Guid processId)
+        public static bool MarkTrackedLinksProcessed(this WowClient self, string clientId, Guid processId)
         {
             var request = new RestRequest
                 {
-                    Resource = "client/{clientId}/trackedlinks/markprocessed/{sentid}",
+                    Resource = "client/{clientId}/trackedlinks/markprocessed/{processId}",
                     RequestFormat = DataFormat.Json
                 };
 
             request.AddHeader("api-version", "1");
-            request.AddUrlSegment("sentId", processId.ToString());
+            request.AddUrlSegment("clientId", clientId);
+            request.AddUrlSegment("processId", processId.ToString());
 
-            var result = self.Client.Execute<bool>(request);
+            var result = self.Client.Execute<BasicResult>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
+            result.CheckAndHandleErrors();
 
-            return result.Data;
+            return result.Data.Result;
         }
     }
 }

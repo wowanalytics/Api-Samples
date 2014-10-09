@@ -16,15 +16,12 @@ namespace wow.ApiLibrary.ExtensionMethods
                 };
 
             request.AddHeader("api-version", "1");
-            request.AddUrlSegment("leadId", leadId.ToString());
+            request.AddUrlSegment("leadid", leadId.ToString());
             request.AddUrlSegment("clientid", clientId);
 
             var result = self.Client.Execute<CompanyDetails>(request);
 
-            if (result.ResponseStatus != ResponseStatus.Completed || result.StatusCode != HttpStatusCode.OK)
-            {
-                throw new Exception(result.ErrorMessage);
-            }
+            result.CheckAndHandleErrors();
 
             return result.Data;
         }
