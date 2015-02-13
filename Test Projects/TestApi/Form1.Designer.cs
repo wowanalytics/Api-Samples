@@ -48,6 +48,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnTrackedLinks = new System.Windows.Forms.Button();
+            this.btnLeads = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -233,11 +234,23 @@
             this.btnTrackedLinks.UseVisualStyleBackColor = true;
             this.btnTrackedLinks.Click += new System.EventHandler(this.btnTrackedLinks_Click);
             // 
+            // btnLeads
+            // 
+            this.btnLeads.Enabled = false;
+            this.btnLeads.Location = new System.Drawing.Point(710, 153);
+            this.btnLeads.Name = "btnLeads";
+            this.btnLeads.Size = new System.Drawing.Size(125, 23);
+            this.btnLeads.TabIndex = 10;
+            this.btnLeads.Text = "Lead Calls";
+            this.btnLeads.UseVisualStyleBackColor = true;
+            this.btnLeads.Click += new System.EventHandler(this.btnLeads_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 405);
+            this.Controls.Add(this.btnLeads);
             this.Controls.Add(this.btnTrackedLinks);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label8);
@@ -276,6 +289,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnTrackedLinks;
+        private System.Windows.Forms.Button btnLeads;
     }
 }
 

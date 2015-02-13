@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Net;
-using System.Reflection;
-using System.Text;
-using RestSharp;
-using wow.ApiLibrary.Authentication;
-using wow.ApiLibrary.Models;
+﻿using System.Diagnostics;
+using PortableRest;
 
 namespace wow.ApiLibrary
 {
@@ -18,37 +9,45 @@ namespace wow.ApiLibrary
     /// <remarks></remarks>
     public class WowClient
     {
+        protected IAuthenticator Authenticator { get; set; }
+
+        public int ApiVersion { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="WowClient" /> class.
         /// </summary>
         /// <param name="authenticator">The authenticator to use.</param>
         public WowClient(IAuthenticator authenticator)
-            : this("https://api.app.wowanalytics.co.uk", authenticator)
+            : this("https://api.app.wowanalytics.co.uk", authenticator, 2, "UnKnown")
         {
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WowClient" /> class.
-        /// </summary>
-        /// <param name="baseUrl">The base URL.</param>
-        /// <param name="authenticator">The authenticator.</param>
-        public WowClient(string baseUrl, IAuthenticator authenticator)
+        public WowClient(IAuthenticator authenticator, string application)
+            : this("https://api.app.wowanalytics.co.uk", authenticator, 2, application)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            var assemblyName = new AssemblyName(assembly.FullName);
-            var version = assemblyName.Version;
+        }
 
-            Client = new RestClient(baseUrl)
+        public WowClient(string baseUrl, IAuthenticator authenticator, int apiVersion, string application)
+        {
+            Client = new RestClient()
+            {
+                BaseUrl = baseUrl,
+                UserAgent = "wow.ApiLibrary/" + application
+            };
+
+            Client.JsonSerializerSettings = new Newtonsoft.Json.JsonSerializerSettings
+            {
+                Error = (sender, e) =>
                 {
-                    UserAgent = "wow.ApiLibrary/" + version,
-                    Authenticator = authenticator
-                };
+                    Debug.WriteLine(e.ToString());
+                },
+                ConstructorHandling = Newtonsoft.Json.ConstructorHandling.AllowNonPublicDefaultConstructor
+            };
+
+            Client.AddHeader("api-version", apiVersion.ToString());
+            authenticator.SetAuthentication(Client);
         }
 
-        
-        /// <summary>
-        /// The RestClient that will make the calls
-        /// </summary>
         public RestClient Client { get; private set; }
     }
 }

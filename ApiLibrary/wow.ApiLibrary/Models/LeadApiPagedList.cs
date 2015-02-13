@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace wow.ApiLibrary.Models
 {
-
-	public class ApiPagedList<T>
+	/// <summary>
+	/// Class ApiPagedList.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	public class LeadApiPagedList
 	{
-
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ApiPagedList{T}"/> class.
 		/// </summary>
@@ -21,9 +23,9 @@ namespace wow.ApiLibrary.Models
 		/// <param name="isLastPage">if set to <c>true</c> [is last page].</param>
 		/// <param name="firstItemOnPage">The first item on page.</param>
 		/// <param name="lastItemOnPage">The last item on page.</param>
-		public ApiPagedList (List<T> data, int pageCount, int totalItemCount, int pageIndex, int pageNumber, int pageSize,
-		                     bool hasPreviousPage, bool hasNextPage, bool isFirstPage, bool isLastPage,
-		                     int firstItemOnPage, int lastItemOnPage)
+		public LeadApiPagedList (List<Lead> data, int pageCount, int totalItemCount, int pageIndex, int pageNumber, int pageSize,
+		                        bool hasPreviousPage, bool hasNextPage, bool isFirstPage, bool isLastPage,
+		                        int firstItemOnPage, int lastItemOnPage)
 		{
 			Data = data;
 			LastItemOnPage = lastItemOnPage;
@@ -43,7 +45,7 @@ namespace wow.ApiLibrary.Models
 		/// Gets the data.
 		/// </summary>
 		/// <value>The data.</value>
-		public List<T> Data { get; private set; }
+		public List<Lead> Data { get; private set; }
 
 		/// <summary>
 		/// Gets the page count.
@@ -111,4 +113,5 @@ namespace wow.ApiLibrary.Models
 		/// <value>The last item on page.</value>
 		public int LastItemOnPage { get; private set; }
 	}
+
 }

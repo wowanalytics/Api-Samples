@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using wow.ApiLibrary;
 using wow.ApiLibrary.Authentication;
@@ -38,7 +32,7 @@ namespace ServerWithApiKey
             var take = int.Parse(valueTake.Text);
             var auth = new BasicAuthentication(UserName, Password);
 
-            var restClient = new WowClient(_baseUrl, auth);
+            var restClient = new WowClient(_baseUrl, auth, 2, "Test Client");
 
             var trackedLinks = restClient.GetTrackedLinks(ClientId, take);
 
@@ -55,7 +49,7 @@ namespace ServerWithApiKey
             var auth = new BasicAuthentication(UserName, Password);
             Guid processId = Guid.Parse(txtProcessId.Text);
 
-            var restClient = new WowClient(_baseUrl, auth);
+            var restClient = new WowClient(_baseUrl, auth, 2, "Test Client");
 
             var trackedLinks = restClient.MarkTrackedLinksProcessed(ClientId, processId);
             

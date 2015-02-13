@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 
 namespace wow.ApiLibrary.Models
 {
-    public class Lead
+	public class Lead : IEquatable<Lead>
     {
         /// <summary>
         /// Gets or sets the id of the lead.
@@ -47,12 +48,6 @@ namespace wow.ApiLibrary.Models
         public string PermaLink { get; set; }
 
         /// <summary>
-        /// Gets or sets the who has been assigned the lead.
-        /// </summary>
-        /// <value>The assigned to.</value>
-        public User AssignedTo { get; set; }
-
-        /// <summary>
         /// Gets or sets the last email address visited from for the lead.
         /// </summary>
         /// <value>The email address.</value>
@@ -79,16 +74,57 @@ namespace wow.ApiLibrary.Models
         public string LeadBand { get; set; }
 
         /// <summary>
-        /// Gets or sets the date that the lead was assigned.
-        /// </summary>
-        /// <value>The assigned date.</value>
-        public DateTime? AssignedDate { get; set; }
-
-        /// <summary>
         /// Gets or sets the date of the leads first visit
         /// </summary>
         /// <value>The first visit.</value>
         public DateTime? FirstVisit { get; set; }
 
+		public List<User> AssignedTo { get; set; }
+
+		public CompanyDetails Company { get; set; }
+
+		#region IEquatable implementation
+
+		public bool Equals(Lead other)
+		{
+			if (ReferenceEquals(null, other)) return false;
+			if (ReferenceEquals(this, other)) return true;
+
+			return this.Id.Equals (other.Id);
+		}
+
+		public override bool Equals(object obj)
+		{
+			return Equals(obj as Lead);
+		}
+
+		public override int GetHashCode()
+		{
+			return Id.GetHashCode ();
+		}
+
+		/// <summary>
+		/// Implements the ==.
+		/// </summary>
+		/// <param name="left">The left.</param>
+		/// <param name="right">The right.</param>
+		/// <returns>The result of the operator.</returns>
+		public static bool operator ==(Lead left, Lead right)
+		{
+			return Equals(left, right);
+		}
+
+		/// <summary>
+		/// Implements the !=.
+		/// </summary>
+		/// <param name="left">The left.</param>
+		/// <param name="right">The right.</param>
+		/// <returns>The result of the operator.</returns>
+		public static bool operator !=(Lead left, Lead right)
+		{
+			return !Equals(left, right);
+		}
+
+		#endregion
     }
 }
