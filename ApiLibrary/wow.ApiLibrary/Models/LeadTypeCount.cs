@@ -15,6 +15,7 @@ namespace wow.ApiLibrary.Models
         /// </summary>
         /// <value>The type.</value>
         public string Type { get; set; }
+
         /// <summary>
         /// Gets or sets the leads.
         /// </summary>

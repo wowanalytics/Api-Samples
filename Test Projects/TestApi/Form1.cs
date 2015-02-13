@@ -25,15 +25,18 @@ namespace ServerWithApiKey
             _baseUrl = ConfigurationManager.AppSettings["baseUrl"];
         }
 
-        private void btnGetClientDetails_Click(object sender, EventArgs e)
+        private async void btnGetClientDetails_Click(object sender, EventArgs e)
         {
             var auth = new BasicAuthentication(txtUserName.Text, txtPassword.Text);
 
-            var restClient = new WowClient(_baseUrl, auth);
+            var restClient = new WowClient(_baseUrl, auth, 2, "Test Client");
 
-            var clients = restClient.Clients();
+            var clients = await restClient.ClientsAsync();
 
-            lstClients.DataSource = clients;
+
+            var clientResult = clients;
+
+            lstClients.DataSource = clientResult;
             lstClients.DisplayMember = "Name";
 
 
@@ -48,12 +51,13 @@ namespace ServerWithApiKey
             {
                 MessageBox.Show("Please select a client");
                 btnTrackedLinks.Enabled = false;
+                btnLeads.Enabled = false;
                 return;
             }
 
             var auth = new BasicAuthentication(txtUserName.Text, txtPassword.Text);
 
-            var restClient = new WowClient(_baseUrl, auth);
+            var restClient = new WowClient(_baseUrl, auth, 2, "Test Client");
 
             var client = restClient.GetClientDetails(selectedClient.Id.ToString());
 
@@ -64,6 +68,7 @@ namespace ServerWithApiKey
             txtExpires.Text = client.AccountExpiry.ToString();
 
             btnTrackedLinks.Enabled = true;
+            btnLeads.Enabled = true;
         }
 
         private void btnTrackedLinks_Click(object sender, EventArgs e)
@@ -78,6 +83,20 @@ namespace ServerWithApiKey
                 form.ShowDialog(this);
             }
         }
+
+        private void btnLeads_Click(object sender, EventArgs e)
+        {
+            using (var form = new Leads
+            {
+                ClientId = txtId.Text,
+                UserName = txtUserName.Text,
+                Password = txtPassword.Text
+            })
+            {
+                form.ShowDialog(this);
+            }
+        }
+
 
     }
 }
