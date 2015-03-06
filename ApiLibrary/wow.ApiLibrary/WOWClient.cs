@@ -18,12 +18,12 @@ namespace wow.ApiLibrary
         /// </summary>
         /// <param name="authenticator">The authenticator to use.</param>
         public WowClient(IAuthenticator authenticator)
-            : this("https://api.app.wowanalytics.co.uk", authenticator, 2, "UnKnown")
+            : this("https://api.wowanalytics.co.uk", authenticator, 2, "UnKnown")
         {
         }
 
         public WowClient(IAuthenticator authenticator, string application)
-            : this("https://api.app.wowanalytics.co.uk", authenticator, 2, application)
+            : this("https://api.wowanalytics.co.uk", authenticator, 2, application)
         {
         }
 
