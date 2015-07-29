@@ -52,6 +52,7 @@ namespace ServerWithApiKey
                 MessageBox.Show("Please select a client");
                 btnTrackedLinks.Enabled = false;
                 btnLeads.Enabled = false;
+                btnCreatePurl.Enabled = false;
                 return;
             }
 
@@ -69,6 +70,7 @@ namespace ServerWithApiKey
 
             btnTrackedLinks.Enabled = true;
             btnLeads.Enabled = true;
+            btnCreatePurl.Enabled = true;
         }
 
         private void btnTrackedLinks_Click(object sender, EventArgs e)
@@ -87,6 +89,19 @@ namespace ServerWithApiKey
         private void btnLeads_Click(object sender, EventArgs e)
         {
             using (var form = new Leads
+            {
+                ClientId = txtId.Text,
+                UserName = txtUserName.Text,
+                Password = txtPassword.Text
+            })
+            {
+                form.ShowDialog(this);
+            }
+        }
+
+        private void btnCreatePurl_Click(object sender, EventArgs e)
+        {
+            using (var form = new Purl
             {
                 ClientId = txtId.Text,
                 UserName = txtUserName.Text,

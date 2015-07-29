@@ -1,8 +1,38 @@
 ﻿<Properties StartupItem="ApiLibrary/wow.ApiLibrary/wow.ApiLibrary.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6.8.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../Mobile/wow.Mobile/iOS/Main.cs">
+    <Files>
+      <File FileName="../../Mobile/wow.Mobile/wow.Mobile/Interfaces/IMainService.cs" Line="26" Column="26" />
+      <File FileName="../../Mobile/wow.Mobile/wow.Mobile/Services/MainService.cs" Line="1" Column="1" />
+      <File FileName="ApiLibrary/wow.ApiLibrary/ExtensionMethods/LeadCalls.cs" Line="55" Column="55" />
+      <File FileName="ApiLibrary/wow.ApiLibrary/ExtensionMethods/SettingCalls.cs" Line="1" Column="1" />
+      <File FileName="../../Mobile/wow.Mobile/wow.Mobile/Views/RootPage.cs" Line="1" Column="1" />
+      <File FileName="../../Mobile/wow.Mobile/wow.Mobile/ViewModel/LoginViewModel.cs" Line="1" Column="1" />
+      <File FileName="../../Mobile/wow.Mobile/wow.Mobile/Views/UpdatePage.cs" Line="1" Column="1" />
+      <File FileName="../../Mobile/wow.Mobile/iOS/Main.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Api Library" expanded="True">
+            <Node name="wow.ApiLibrary" expanded="True">
+              <Node name="ExtensionMethods" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/kenlea/Documents/Projects/Mobile/wow.Mobile/wow.Mobile/ViewModel/LoginViewModel.cs" line="165" column="1" />
+      <Breakpoint file="/Users/kenlea/Documents/Projects/Mobile/wow.Mobile/wow.Mobile/ViewModel/LoginViewModel.cs" line="102" column="1" />
+      <Breakpoint file="/Users/kenlea/Documents/Projects/Mobile/wow.Mobile/wow.Mobile/Views/UpdatePage.cs" line="62" column="1" />
+      <Breakpoint file="/Users/kenlea/Documents/Projects/Mobile/wow.Mobile/wow.Mobile/Views/RootPage.cs" line="34" column="1" />
+      <Breakpoint file="/Users/kenlea/Documents/Projects/Mobile/wow.Mobile/wow.Mobile/ViewModel/LoginViewModel.cs" line="99" column="1" />
+      <Breakpoint file="/Users/kenlea/Documents/Projects/Mobile/wow.Mobile/wow.Mobile/Helpers/Settings.cs" line="26" column="1" />
+      <Breakpoint file="/Users/kenlea/Documents/Projects/Mobile/wow.Mobile/wow.Mobile/Services/MainService.cs" line="63" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

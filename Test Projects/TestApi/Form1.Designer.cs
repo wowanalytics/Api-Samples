@@ -49,6 +49,7 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnTrackedLinks = new System.Windows.Forms.Button();
             this.btnLeads = new System.Windows.Forms.Button();
+            this.btnCreatePurl = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -245,11 +246,23 @@
             this.btnLeads.UseVisualStyleBackColor = true;
             this.btnLeads.Click += new System.EventHandler(this.btnLeads_Click);
             // 
+            // btnCreatePurl
+            // 
+            this.btnCreatePurl.Enabled = false;
+            this.btnCreatePurl.Location = new System.Drawing.Point(710, 193);
+            this.btnCreatePurl.Name = "btnCreatePurl";
+            this.btnCreatePurl.Size = new System.Drawing.Size(125, 23);
+            this.btnCreatePurl.TabIndex = 10;
+            this.btnCreatePurl.Text = "Create PURL";
+            this.btnCreatePurl.UseVisualStyleBackColor = true;
+            this.btnCreatePurl.Click += new System.EventHandler(this.btnCreatePurl_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 405);
+            this.Controls.Add(this.btnCreatePurl);
             this.Controls.Add(this.btnLeads);
             this.Controls.Add(this.btnTrackedLinks);
             this.Controls.Add(this.txtPassword);
@@ -290,6 +303,7 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnTrackedLinks;
         private System.Windows.Forms.Button btnLeads;
+        private System.Windows.Forms.Button btnCreatePurl;
     }
 }
 

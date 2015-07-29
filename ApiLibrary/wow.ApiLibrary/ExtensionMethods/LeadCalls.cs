@@ -222,6 +222,80 @@ namespace wow.ApiLibrary.ExtensionMethods
             return result;
         }
 
+        /// <summary>
+        /// get leads as an asynchronous operation.
+        /// </summary>
+        /// <param name="self">The self.</param>
+        /// <param name="clientId">The client identifier.</param>
+        /// <param name="type">The type.</param>
+        /// <param name="startDate">The start date.</param>
+        /// <param name="endDate">The end date.</param>
+        /// <param name="page">The page.</param>
+        /// <param name="take">The take.</param>
+        /// <param name="search">The search.</param>
+        /// <returns>Task&lt;LeadApiPagedList&gt;.</returns>
+        /// <exception cref="HttpRequestException">Throws an exception if the <see cref="P:System.Net.Http.HttpResponseMessage.IsSuccessStatusCode" /> property for the HTTP response is false.</exception>
+        public async static Task<LeadApiPagedList> GetLeadsSearchAsync(this WowClient self, string clientId, string type, DateTime startDate, DateTime endDate, int page, int take, LeadSearchModel search)
+        {
+
+            var request = new RestRequest
+            {
+                Resource = "client/{clientId}/leads/{type}/search/{startDate}/{endDate}/{page}/{take}",
+                ContentType = ContentTypes.Json,
+                Method = HttpMethod.Post
+            };
+
+            request.AddUrlSegment("clientId", clientId);
+            request.AddUrlSegment("type", type);
+            request.AddUrlSegment("startDate", startDate.ToString("yyyy-MM-dd"));
+            request.AddUrlSegment("endDate", endDate.ToString("yyyy-MM-dd"));
+            request.AddUrlSegment("page", page.ToString());
+            request.AddUrlSegment("take", take.ToString());
+            request.AddParameter(search);
+
+            var result = await self.Client.ExecuteAsync<LeadApiPagedList>(request);
+
+            return result;
+
+        }
+
+        /// <summary>
+        /// Gets the leads.
+        /// </summary>
+        /// <param name="self">The self.</param>
+        /// <param name="clientId">The client identifier.</param>
+        /// <param name="type">The type.</param>
+        /// <param name="startDate">The start date.</param>
+        /// <param name="endDate">The end date.</param>
+        /// <param name="page">The page.</param>
+        /// <param name="take">The take.</param>
+        /// <param name="search">The search.</param>
+        /// <returns>LeadApiPagedList.</returns>
+        public static LeadApiPagedList GetLeadsSearch(this WowClient self, string clientId, string type, DateTime startDate, DateTime endDate, int page, int take, LeadSearchModel search)
+        {
+
+            var request = new RestRequest
+            {
+                Resource = "client/{clientId}/leads/{type}/search/{startDate}/{endDate}/{page}/{take}",
+                ContentType = ContentTypes.Json,
+                Method = HttpMethod.Post
+            };
+
+            request.AddUrlSegment("clientId", clientId);
+            request.AddUrlSegment("type", type);
+            request.AddUrlSegment("startDate", startDate.ToString("yyyy-MM-dd"));
+            request.AddUrlSegment("endDate", endDate.ToString("yyyy-MM-dd"));
+            request.AddUrlSegment("page", page.ToString());
+            request.AddUrlSegment("take", take.ToString());
+            request.AddParameter(search);
+
+
+            var result = AsyncHelpers.RunSync(() => self.Client.ExecuteAsync<LeadApiPagedList>(request));
+
+            return result;
+
+        }
+
 
         /// <summary>
         /// Gets the lead types.

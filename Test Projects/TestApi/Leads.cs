@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using wow.ApiLibrary;
 using wow.ApiLibrary.Authentication;
 using wow.ApiLibrary.ExtensionMethods;
+using wow.ApiLibrary.Models;
 
 namespace ServerWithApiKey
 {
@@ -60,6 +61,37 @@ namespace ServerWithApiKey
             var restClient = new WowClient(_baseUrl, auth, 2, "Test Client");
 
             await restClient.GetLeadsAsync(ClientId, cbLeadTypes.Text, DateTime.Now.AddDays(-1), DateTime.Now, 1, 100)
+                .ContinueWith(t =>
+                {
+                    //cbLeadTypes.Items.AddRange(t.Result.ToArray()) 
+                    BeginInvoke((Action)(() =>
+                    {
+                        txtLeads.Text = Newtonsoft.Json.JsonConvert.SerializeObject(t.Result, Formatting.Indented);
+                    }));
+                });
+        }
+
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            var auth = new BasicAuthentication(UserName, Password);
+            var restClient = new WowClient(_baseUrl, auth, 2, "Test Client");
+
+            var searchData = new LeadSearchModel
+            {
+                Search = txtSearch.Text,
+                SearchType = cbSearch.Text,
+                Utm = new UtmValues
+                {
+                    UtmContent = txtContent.Text,
+                    UtmMedium = txtMedium.Text,
+                    UtmName = txtCampaign.Text,
+                    UtmSource = txtSource.Text,
+                    UtmTerm = txtTerm.Text
+                }
+            };
+
+
+            await restClient.GetLeadsSearchAsync(ClientId, cbLeadTypes.Text, DateTime.Now.AddDays(-1), DateTime.Now, 1, 100, searchData)
                 .ContinueWith(t =>
                 {
                     //cbLeadTypes.Items.AddRange(t.Result.ToArray()) 
