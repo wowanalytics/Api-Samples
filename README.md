@@ -1,4 +1,4 @@
-API-Sample
-==========
+GatorLeads Samples
+==================
 
-WOW Analytics API samples
+Now maintained at https://bitbucket.org/communigator/gatorleads-api
